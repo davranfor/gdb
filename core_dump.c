@@ -1,16 +1,13 @@
-/*
-
+/*************************
 Analize core dump with gdb
 --------------------------
-
 ulimit -c unlimited
 gcc -g -o demo core_dump.c
 ./demo
 gdb demo core
 (gdb) where
 (gdb) bt full
-
-*/
+*************************/
 
 #include <stdio.h>
 
