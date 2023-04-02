@@ -21,6 +21,9 @@ echo "set logging overwrite on" >> trace.gdb
 # Write only to the log file (not to stdout)
 echo "set logging redirect on" >> trace.gdb
 
+# Don't print the arguments of the functions
+# echo "set print frame-arguments presence" >> trace.gdb
+
 # For each .c file create a backtrace for all functions
 find $2 -maxdepth 1 -type f -name '*.c' -print0 | while read -d $'\0' file
 do
@@ -35,7 +38,7 @@ done
 echo "echo \nDebugging ...\n\n" >> trace.gdb
 
 # Show the current values of the logging settings
-#echo "show logging" >> trace.gdb
+# Wecho "show logging" >> trace.gdb
 
 # Enable logging
 echo "set logging enabled on" >> trace.gdb
