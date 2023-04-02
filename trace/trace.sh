@@ -21,10 +21,10 @@ echo "set logging overwrite on" >> trace.gdb
 # Write only to the log file (not to stdout)
 echo "set logging redirect on" >> trace.gdb
 
-# For each .c file create a backtrace for each function called
-for i in $2/*.c; do
-    [ -f "$i" ] || break
-    echo "rbreak $i:." >> trace.gdb
+# For each .c file create a backtrace for all functions
+find $2 -maxdepth 1 -type f -name '*.c' -print0 | while read -d $'\0' file
+do
+    echo "rbreak $file:." >> trace.gdb
     echo "command" >> trace.gdb
     echo "silent" >> trace.gdb
     echo "backtrace 1" >> trace.gdb
