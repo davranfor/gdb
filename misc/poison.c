@@ -7,6 +7,6 @@ int main(void)
 {
     char str[256];
 
-    sprintf(str, "Hello");
+    sprintf(str, "Hello"); //Doesn't compile
     return 0;
 }
